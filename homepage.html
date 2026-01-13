@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Zhou - Ph.D. Candidate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --sidebar-width: 280px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+        }
+
+        /* --- 侧边栏 --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 4px solid rgba(255,255,255,0.2);
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .sidebar h1 { font-size: 1.6em; margin: 10px 0 5px 0; font-weight: 700; }
+        .sidebar h2 { font-size: 0.95em; font-weight: 300; margin-bottom: 20px; opacity: 0.9; }
+
+        .social-links { margin-top: 10px; margin-bottom: 20px; }
+        .social-links a {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2em;
+            margin: 0 8px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover { color: white; }
+
+        .nav-links { list-style: none; padding: 0; width: 100%; text-align: left; margin-top: 10px; }
+        .nav-links li { margin-bottom: 8px; }
+        .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 1.05em;
+            display: block;
+            padding: 10px 25px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover { background-color: rgba(255,255,255,0.1); color: white; padding-left: 30px; }
+
+        .contact-area { margin-top: auto; font-size: 0.85em; text-align: left; padding-left: 10px; opacity: 0.8; }
+        .contact-area a { color: white; }
+
+        /* --- 右侧内容区 --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 50px 80px;
+            flex: 1;
+            max-width: 900px;
+        }
+
+        section { margin-bottom: 60px; scroll-margin-top: 40px; }
+
+        h3.section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 1.4em;
+        }
+
+        .bio-text { line-height: 1.8; font-size: 1.05em; color: #444; text-align: justify; }
+
+        .item-list { list-style: none; padding: 0; }
+        .item-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #444;
+        }
+        .item-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .pub-item { margin-bottom: 18px; }
+        .pub-title { font-weight: 600; color: #000; }
+        .pub-venue { font-style: italic; color: #555; }
+        
+        .tag-prep { 
+            font-size: 0.8em; 
+            background: #fff3cd; 
+            color: #856404; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; position: relative; height: auto; padding: 30px 20px; }
+            .main-content { margin-left: 0; padding: 30px 20px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <img src="images/profile.jpg" alt="Min Zhou" class="profile-photo">
+        
+        <h1>Min Zhou</h1>
+        <h2>Ph.D. Candidate<br>City University of Hong Kong</h2>
+
+        <div class="social-links">
+            <a href="https://scholar.google.com/citations?user=BlYcgCwAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#about">Biography</a></li>
+            <li><a href="#news">News & Awards</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#service">Professional Activities</a></li> <li><a href="#teaching">Teaching Experience</a></li>   <li><a href="#interests">Research Interests</a></li>
+        </ul>
+
+        <div class="contact-area">
+            <p>📍 Kowloon, Hong Kong</p>
+            <p>📧 <a href="mailto:mzhou.cityu@gmail.com">mzhou.cityu@gmail.com</a></p>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        
+        <section id="about">
+            <h3 class="section-title">Biography</h3>
+            <div class="bio-text">
+                <p>
+                    Min Zhou received the B.Eng. degree in 2017 and the M.S. degree in 2020, both from the School of Management of Engineering, Nanjing University, Nanjing, China.
+                </p>
+                <p>
+                    He is currently pursuing the Ph.D. degree with the <a href="https://www.cityu.edu.hk/sdsc/" target="_blank" style="color:var(--accent-color); text-decoration:none;">Department of Data Science</a>, City University of Hong Kong, supervised by <a href="https://www.mhchen.com/" target="_blank" style="color:var(--primary-color); font-weight:500;">Prof. Minghua Chen</a>. 
+                </p>
+                <p>
+                    He is a recipient of the prestigious <strong>City University of Hong Kong Presidential PhD Scholarship</strong>. His research interests include machine learning and its applications to power system analysis and optimization.
+                </p>
+            </div>
+        </section>
+
+        <section id="news">
+            <h3 class="section-title">Honors & Awards</h3>
+            <ul class="item-list">
+                <li><strong>[2023]</strong> Outstanding Academic Performance Award for Research Degree Students, CityU.</li>
+                <li><strong>[2020]</strong> City University of Hong Kong Presidential PhD Scholarship.</li>
+                <li><strong>[2019]</strong> Outstanding Postgraduates of Nanjing University.</li>
+                <li><strong>[2019]</strong> Artificial Intelligence Scholarship of Nanjing.</li>
+                <li><strong>[2018]</strong> <strong>National Scholarship for Postgraduates</strong>.</li>
+            </ul>
+        </section>
+
+        <section id="publications">
+            <h3 class="section-title">Publications</h3>
+            
+            <h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:0;">Working Papers / Preprints</h4>
+            
+            <div class="pub-item">
+                <span class="pub-title">Breaking the Iterative Barrier: Machine Learning Facilitates Real-Time Grid Optimization with Certifiable Safety</span><span class="tag-prep">In Preparation</span><br>
+                <strong>M. Zhou</strong>, E. Liang and M. Chen.<br>
+            </div>
+
+            <div class="pub-item">
+                <span class="pub-title">Machine learning for solving multi-stage optimization problems</span><span class="tag-prep">In Preparation</span><br>
+                <strong>M. Zhou</strong>, E. Liang and M. Chen.<br>
+            </div>
+
+            <h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Refereed Journals</h4>
+            
+            <div class="pub-item">
+                <span class="pub-title">Partially Permutation-Invariant Neural Network for Solving Two-Stage Stochastic AC-OPF Problem</span><br>
+                <strong>M. Zhou</strong>, E. Liang, M. Chen and S. H. Low.<br>
+                <span class="pub-venue">IEEE Transactions on Power Systems, Accepted, 2025.</span>
+            </div>
+
+            <div class="pub-item">
+                <span class="pub-title">DeepOPF-FT: One Deep Neural Network for Multiple AC-OPF Problems with Flexible Topology</span><br>
+                <strong>M. Zhou</strong>, M. Chen and S. H. Low.<br>
+                <span class="pub-venue">IEEE Transactions on Power Systems, vol. 38, no. 1, pp.964-967, 2023.</span>
+            </div>
+
+            <div class="pub-item">
+                <span class="pub-title">Multi-objective prediction intervals for wind power forecast based on deep neural networks</span><br>
+                <strong>M. Zhou</strong>, B. Wang, S. Guo, and J. Watada.<br>
+                <span class="pub-venue">Information Sciences, vol. 550, pp. 207-220, 2021.</span>
+            </div>
+
+            <div class="pub-item">
+                <span class="pub-title">Deep learning-based rolling horizon unit commitment under hybrid uncertainties</span><br>
+                <strong>M. Zhou</strong>, B. Wang, and J. Watada.<br>
+                <span class="pub-venue">Energy, vol. 186, p. 115843, 2019.</span>
+            </div>
+
+            <div class="pub-item">
+                <span class="pub-title">A data-driven approach for multi-objective unit commitment under hybrid uncertainties</span><br>
+                <strong>M. Zhou</strong>, B. Wang, T. Li, and J. Watada.<br>
+                <span class="pub-venue">Energy, vol. 164, pp. 722-733, 2018.</span>
+            </div>
+
+            <h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Conference Proceedings</h4>
+
+            <div class="pub-item">
+                <span class="pub-title">Optimizing Demand Response in Distribution Network with Grid Operational Constraints</span><br>
+                T. Zhao, <strong>M. Zhou</strong>, Y. Mo, J. M. Wang, J. Luo, X. Pan, and M. Chen.<br>
+                <span class="pub-venue">Proceedings of the 14th ACM International Conference on Future Energy Systems (e-Energy), 2023.</span>
+            </div>
+        </section>
+
+        <section id="service">
+            <h3 class="section-title">Professional Activities</h3>
+            <div style="margin-bottom: 10px; font-weight: 500;">Reviewer for Journals</div>
+            <ul class="item-list">
+                <li>IEEE Transactions on Power Systems</li>
+                <li>IEEE Transactions on Smart Grid</li>
+                <li>Energy</li>
+            </ul>
+        </section>
+
+        <section id="teaching">
+            <h3 class="section-title">Teaching Experience</h3>
+            <div style="margin-bottom: 10px; font-weight: 500;">Teaching Assistant, City University of Hong Kong</div>
+            <ul class="item-list">
+                <li><strong>SDSC6014</strong>: Networked Life and Data Science</li>
+                <li><strong>SDSC3060</strong>: Operations Research</li>
+                <li><strong>SDSC3102</strong>: Quality Technologies</li>
+            </ul>
+        </section>
+
+        <section id="interests">
+            <h3 class="section-title">Research Interests</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span style="background:#eef2f5; padding:8px 15px; border-radius:4px; font-size:0.95em; color:#444;">Machine Learning for Power Systems</span>
+                <span style="background:#eef2f5; padding:8px 15px; border-radius:4px; font-size:0.95em; color:#444;">Data-Driven Optimization</span>
+                <span style="background:#eef2f5; padding:8px 15px; border-radius:4px; font-size:0.95em; color:#444;">Smart Grid Operations</span>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>
