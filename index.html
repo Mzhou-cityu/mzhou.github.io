@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Min Zhou - Postdoc Fellow</title>
+    <meta name="description" content="Min Zhou - Postdoc Fellow at City University of Hong Kong. Research in Machine Learning for Power Systems.">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --sidebar-width: 280px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+        }
+
+        /* --- 侧边栏 --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
+            color: white;
+            position: fixed;
+            height: 100vh;
+            padding: 40px 20px;
+            box-sizing: border-box;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .profile-photo {
+            width: 160px;
+            height: 160px;
+            border-radius: 10px;
+            object-fit: cover;
+            object-position: center 10%;
+            border: 4px solid rgba(255,255,255,0.2);
+            margin-bottom: 15px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .sidebar h1 { font-size: 1.6em; margin: 10px 0 5px 0; font-weight: 700; }
+        .sidebar h2 { font-size: 0.95em; font-weight: 300; margin-bottom: 20px; opacity: 0.9; }
+
+        .social-links { margin-top: 10px; margin-bottom: 20px; }
+        .social-links a {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.2em;
+            margin: 0 8px;
+            transition: color 0.3s;
+        }
+        .social-links a:hover { color: white; }
+
+        .nav-links { list-style: none; padding: 0; width: 100%; text-align: left; margin-top: 10px; }
+        .nav-links li { margin-bottom: 8px; }
+        .nav-links a {
+            color: rgba(255,255,255,0.75);
+            text-decoration: none;
+            font-size: 1.05em;
+            display: block;
+            padding: 10px 25px;
+            border-radius: 6px;
+            transition: all 0.3s;
+        }
+        .nav-links a:hover { background-color: rgba(255,255,255,0.1); color: white; padding-left: 30px; }
+
+        .contact-area { margin-top: auto; font-size: 0.85em; text-align: left; padding-left: 10px; opacity: 0.8; }
+        .contact-area a { color: white; }
+
+        /* --- 右侧内容区 --- */
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 50px 80px;
+            flex: 1;
+            max-width: 900px;
+        }
+
+        section { margin-bottom: 60px; scroll-margin-top: 40px; position: relative; }
+
+        h3.section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+            font-weight: 700;
+            font-size: 1.4em;
+        }
+
+        .bio-text { line-height: 1.8; font-size: 1.05em; color: #444; text-align: justify; }
+        .bio-text * { font-family: 'Roboto', sans-serif !important; font-size: inherit !important; color: inherit !important; line-height: inherit !important; }
+
+        .item-list { list-style: none; padding: 0; }
+        .item-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            color: #444;
+        }
+        .item-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .pub-item { margin-bottom: 18px; }
+        .pub-title { font-weight: 600; color: #000; }
+        .pub-venue { font-style: italic; color: #555; }
+        
+        .tag-prep { 
+            font-size: 0.8em; 
+            background: #fff3cd; 
+            color: #856404; 
+            padding: 2px 6px; 
+            border-radius: 4px; 
+            margin-left: 8px;
+            font-weight: normal;
+        }
+
+        /* ==========================================
+           CMS STYLES - Only visible when logged in
+           ========================================== */
+
+        /* Login trigger - small lock icon */
+        .login-trigger {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: rgba(0,0,0,0.35);
+            transition: all 0.3s;
+            z-index: 9999;
+            opacity: 0.4;
+        }
+        .login-trigger:hover {
+            background: var(--primary-color);
+            color: white;
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        /* Login Modal */
+        .login-modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-modal-overlay.active { display: flex; }
+
+        .login-modal {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            width: 380px;
+            max-width: 90vw;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        .login-modal h3 {
+            margin: 0 0 8px 0;
+            color: var(--primary-color);
+            font-size: 1.4em;
+        }
+        .login-modal p {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 24px;
+        }
+        .login-modal .form-group {
+            margin-bottom: 16px;
+        }
+        .login-modal label {
+            display: block;
+            font-size: 0.85em;
+            color: #666;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+        .login-modal input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 0.95em;
+            font-family: inherit;
+            transition: border-color 0.3s;
+            box-sizing: border-box;
+        }
+        .login-modal input:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+        .login-modal .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 8px;
+        }
+        .login-modal .login-btn:hover {
+            background: #2980b9;
+        }
+        .login-modal .login-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .login-modal .close-modal {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: none;
+            border: none;
+            font-size: 1.3em;
+            color: #999;
+            cursor: pointer;
+        }
+        .login-modal .close-modal:hover { color: #333; }
+        .login-error {
+            color: #e74c3c;
+            font-size: 0.85em;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* Admin bar */
+        .admin-bar {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: var(--sidebar-width);
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), #34495e);
+            color: white;
+            padding: 10px 30px;
+            z-index: 9998;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9em;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .admin-bar.active { display: flex; }
+        .admin-bar .admin-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .admin-bar .admin-status .dot {
+            width: 8px;
+            height: 8px;
+            background: #2ecc71;
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+        .admin-bar .logout-btn, .admin-bar .seed-btn {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 6px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85em;
+            transition: all 0.3s;
+        }
+        .admin-bar .logout-btn:hover, .admin-bar .seed-btn:hover {
+            background: rgba(255,255,255,0.25);
+        }
+        .admin-bar .seed-btn {
+            border-color: rgba(46,204,113,0.6);
+        }
+
+        body.admin-mode .main-content {
+            padding-top: 90px;
+        }
+
+        /* Section edit button */
+        .section-edit-btn {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: inherit;
+            gap: 5px;
+            align-items: center;
+        }
+        .section-edit-btn i { font-size: 0.85em; }
+        .section-edit-btn:hover { background: #2980b9; transform: translateY(-1px); }
+        body.admin-mode .section-edit-btn { display: inline-flex; }
+
+        /* Edit mode styles */
+        .section-editing {
+            background: #f8fbff;
+            border: 2px dashed var(--accent-color);
+            border-radius: 10px;
+            padding: 20px;
+            margin: -20px;
+        }
+        .edit-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 16px;
+            justify-content: flex-end;
+        }
+        .edit-actions button {
+            padding: 8px 20px;
+            border-radius: 6px;
+            border: none;
+            font-size: 0.85em;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        .btn-save {
+            background: #2ecc71;
+            color: white;
+        }
+        .btn-save:hover { background: #27ae60; }
+        .btn-cancel {
+            background: #e0e0e0;
+            color: #555;
+        }
+        .btn-cancel:hover { background: #ccc; }
+
+        /* Editable content area */
+        .editable-content {
+            outline: none;
+            min-height: 60px;
+        }
+        .editable-content:focus {
+            background: white;
+            border-radius: 4px;
+        }
+
+        /* List editor styles */
+        .list-editor-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding: 10px 14px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        .list-editor-item input,
+        .list-editor-item textarea {
+            flex: 1;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.9em;
+            resize: vertical;
+        }
+        .list-editor-item .remove-item-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1.1em;
+            padding: 4px;
+            flex-shrink: 0;
+            transition: color 0.3s;
+        }
+        .list-editor-item .remove-item-btn:hover { color: #c0392b; }
+        .add-item-btn {
+            background: none;
+            border: 2px dashed #ccc;
+            color: #888;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+        .add-item-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Publication editor */
+        .pub-editor-item {
+            padding: 16px;
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+        .pub-editor-item .field-row {
+            margin-bottom: 8px;
+        }
+        .pub-editor-item label {
+            display: block;
+            font-size: 0.78em;
+            color: #888;
+            margin-bottom: 3px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pub-editor-item input, .pub-editor-item select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 0.9em;
+            box-sizing: border-box;
+        }
+        .pub-editor-item .pub-editor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        /* Tag editor */
+        .tag-editor {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tag-editor-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: #eef2f5;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+        .tag-editor-item input {
+            border: none;
+            background: transparent;
+            font-size: 0.9em;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        .tag-editor-item input:focus { outline: none; }
+        .tag-editor-item .remove-item-btn {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #2d3436;
+            color: white;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 0.9em;
+            z-index: 10001;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast.success { background: #00b894; }
+        .toast.error { background: #e17055; }
+
+        /* Loading spinner */
+        .loading-spinner {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; position: relative; height: auto; padding: 30px 20px; }
+            .main-content { margin-left: 0; padding: 30px 20px; }
+            .nav-links { display: none; }
+            .admin-bar { left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <img src="images/profile.jpg" alt="Min Zhou" class="profile-photo">
+        
+        <h1>Min Zhou</h1>
+        <h2>Postdoc Fellow<br>City University of Hong Kong</h2>
+
+        <div class="social-links">
+            <a href="https://scholar.google.com/citations?user=BlYcgCwAAAAJ&hl=en" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#about">Biography</a></li>
+            <li><a href="#news">News & Awards</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#service">Professional Activities</a></li> <li><a href="#teaching">Teaching Experience</a></li>   <li><a href="#interests">Research Interests</a></li>
+        </ul>
+
+        <div class="contact-area">
+            <p>📍 Kowloon, Hong Kong</p>
+            <p>📧 <a href="mailto:mzhou.cityu@gmail.com">mzhou.cityu@gmail.com</a></p>
+        </div>
+    </nav>
+
+    <!-- Admin Bar (visible when logged in) -->
+    <div class="admin-bar" id="adminBar">
+        <div class="admin-status">
+            <span class="dot"></span>
+            <span>Edit Mode — Logged in as <strong id="adminEmail"></strong></span>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center;">
+            <button class="seed-btn" id="seedBtn" onclick="seedInitialContent()" style="display:none;" title="First-time setup: save all default content to Firestore">
+                <i class="fas fa-database"></i> Seed Initial Content
+            </button>
+            <button class="logout-btn" onclick="handleLogout()">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </div>
+
+    <!-- Login Trigger (small lock icon) -->
+    <button class="login-trigger" id="loginTrigger" onclick="showLoginModal()" title="Admin Login">
+        <i class="fas fa-lock"></i>
+    </button>
+
+    <!-- Login Modal -->
+    <div class="login-modal-overlay" id="loginModal">
+        <div class="login-modal">
+            <button class="close-modal" onclick="hideLoginModal()">&times;</button>
+            <h3>Admin Login</h3>
+            <p>Sign in to edit website content</p>
+            <form onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" required placeholder="••••••••">
+                </div>
+                <div class="login-error" id="loginError"></div>
+                <button type="submit" class="login-btn" id="loginBtn">Sign In</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <main class="main-content">
+        
+        <!-- BIOGRAPHY -->
+        <section id="about" data-section="biography">
+            <h3 class="section-title">Biography</h3>
+            <button class="section-edit-btn" onclick="startEdit('biography')"><i class="fas fa-pen"></i> Edit</button>
+            <div class="bio-text" id="biography-content">
+                <p>
+                    Min Zhou received the B.Eng. degree in 2017 and the M.S. degree in 2020, both from the School of Management of Engineering, Nanjing University, Nanjing, China.
+                </p>
+                <p>
+                    He is currently pursuing the Ph.D. degree with the <a href="https://www.cityu.edu.hk/sdsc/" target="_blank" style="color:var(--accent-color); text-decoration:none;">Department of Data Science</a>, City University of Hong Kong, supervised by <a href="https://www.mhchen.com/" target="_blank" style="color:var(--primary-color); font-weight:500;">Prof. Minghua Chen</a>. 
+                </p>
+                <p>
+                    He is a recipient of the prestigious <strong>City University of Hong Kong Presidential PhD Scholarship</strong>. His research interests include machine learning and its applications to power system analysis and optimization.
+                </p>
+            </div>
+        </section>
+
+        <!-- HONORS & AWARDS -->
+        <section id="news" data-section="honors">
+            <h3 class="section-title">Honors & Awards</h3>
+            <button class="section-edit-btn" onclick="startEdit('honors')"><i class="fas fa-pen"></i> Edit</button>
+            <ul class="item-list" id="honors-content">
+                <li><strong>[2023]</strong> Outstanding Academic Performance Award for Research Degree Students, CityU.</li>
+                <li><strong>[2020]</strong> City University of Hong Kong Presidential PhD Scholarship.</li>
+                <li><strong>[2019]</strong> Outstanding Postgraduates of Nanjing University.</li>
+                <li><strong>[2019]</strong> Artificial Intelligence Scholarship of Nanjing.</li>
+                <li><strong>[2018]</strong> <strong>National Scholarship for Postgraduates</strong>.</li>
+            </ul>
+        </section>
+
+        <!-- PUBLICATIONS -->
+        <section id="publications" data-section="publications">
+            <h3 class="section-title">Publications</h3>
+            <button class="section-edit-btn" onclick="startEdit('publications')"><i class="fas fa-pen"></i> Edit</button>
+            <div id="publications-content">
+                <h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:0;">Working Papers / Preprints</h4>
+                
+                <div class="pub-item">
+                    <span class="pub-title">Breaking the Iterative Barrier: Machine Learning Facilitates Real-Time Grid Optimization with Certifiable Safety</span><span class="tag-prep">In Preparation</span><br>
+                    <strong>M. Zhou</strong>, E. Liang and M. Chen.<br>
+                </div>
+
+                <div class="pub-item">
+                    <span class="pub-title">Machine learning for solving multi-stage optimization problems</span><span class="tag-prep">In Preparation</span><br>
+                    <strong>M. Zhou</strong>, E. Liang and M. Chen.<br>
+                </div>
+
+                <h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Refereed Journals</h4>
+                
+                <div class="pub-item">
+                    <span class="pub-title">Partially Permutation-Invariant Neural Network for Solving Two-Stage Stochastic AC-OPF Problem</span><br>
+                    <strong>M. Zhou</strong>, E. Liang, M. Chen and S. H. Low.<br>
+                    <span class="pub-venue">IEEE Transactions on Power Systems, Accepted, 2025.</span>
+                </div>
+
+                <div class="pub-item">
+                    <span class="pub-title">DeepOPF-FT: One Deep Neural Network for Multiple AC-OPF Problems with Flexible Topology</span><br>
+                    <strong>M. Zhou</strong>, M. Chen and S. H. Low.<br>
+                    <span class="pub-venue">IEEE Transactions on Power Systems, vol. 38, no. 1, pp.964-967, 2023.</span>
+                </div>
+
+                <div class="pub-item">
+                    <span class="pub-title">Multi-objective prediction intervals for wind power forecast based on deep neural networks</span><br>
+                    <strong>M. Zhou</strong>, B. Wang, S. Guo, and J. Watada.<br>
+                    <span class="pub-venue">Information Sciences, vol. 550, pp. 207-220, 2021.</span>
+                </div>
+
+                <div class="pub-item">
+                    <span class="pub-title">Deep learning-based rolling horizon unit commitment under hybrid uncertainties</span><br>
+                    <strong>M. Zhou</strong>, B. Wang, and J. Watada.<br>
+                    <span class="pub-venue">Energy, vol. 186, p. 115843, 2019.</span>
+                </div>
+
+                <div class="pub-item">
+                    <span class="pub-title">A data-driven approach for multi-objective unit commitment under hybrid uncertainties</span><br>
+                    <strong>M. Zhou</strong>, B. Wang, T. Li, and J. Watada.<br>
+                    <span class="pub-venue">Energy, vol. 164, pp. 722-733, 2018.</span>
+                </div>
+
+                <h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Conference Proceedings</h4>
+
+                <div class="pub-item">
+                    <span class="pub-title">Optimizing Demand Response in Distribution Network with Grid Operational Constraints</span><br>
+                    T. Zhao, <strong>M. Zhou</strong>, Y. Mo, J. M. Wang, J. Luo, X. Pan, and M. Chen.<br>
+                    <span class="pub-venue">Proceedings of the 14th ACM International Conference on Future Energy Systems (e-Energy), 2023.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROFESSIONAL ACTIVITIES -->
+        <section id="service" data-section="activities">
+            <h3 class="section-title">Professional Activities</h3>
+            <button class="section-edit-btn" onclick="startEdit('activities')"><i class="fas fa-pen"></i> Edit</button>
+            <div id="activities-content">
+                <div style="margin-bottom: 10px; font-weight: 500;">Reviewer for Journals</div>
+                <ul class="item-list">
+                    <li>IEEE Transactions on Power Systems</li>
+                    <li>IEEE Transactions on Smart Grid</li>
+                    <li>Energy</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- TEACHING EXPERIENCE -->
+        <section id="teaching" data-section="teaching">
+            <h3 class="section-title">Teaching Experience</h3>
+            <button class="section-edit-btn" onclick="startEdit('teaching')"><i class="fas fa-pen"></i> Edit</button>
+            <div id="teaching-content">
+                <div style="margin-bottom: 10px; font-weight: 500;">Teaching Assistant, City University of Hong Kong</div>
+                <ul class="item-list">
+                    <li><strong>SDSC6014</strong>: Networked Life and Data Science</li>
+                    <li><strong>SDSC3060</strong>: Operations Research</li>
+                    <li><strong>SDSC3102</strong>: Quality Technologies</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- RESEARCH INTERESTS -->
+        <section id="interests" data-section="interests">
+            <h3 class="section-title">Research Interests</h3>
+            <button class="section-edit-btn" onclick="startEdit('interests')"><i class="fas fa-pen"></i> Edit</button>
+            <div id="interests-content" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <span style="background:#eef2f5; padding:8px 15px; border-radius:4px; font-size:0.95em; color:#444;">Machine Learning for Power Systems</span>
+                <span style="background:#eef2f5; padding:8px 15px; border-radius:4px; font-size:0.95em; color:#444;">Data-Driven Optimization</span>
+                <span style="background:#eef2f5; padding:8px 15px; border-radius:4px; font-size:0.95em; color:#444;">Smart Grid Operations</span>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =============================================
+         FIREBASE SDK & CMS JAVASCRIPT
+         ============================================= -->
+    <script type="module">
+        // Firebase SDK (v9 modular - tree-shakeable)
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+        import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js';
+        import { getFirestore, doc, getDoc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
+
+        // ============================================
+        // 🔧 FIREBASE CONFIGURATION
+        // Replace these values with your Firebase project config
+        // Get them from: Firebase Console → Project Settings → General → Your apps
+        // ============================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyCs8nEiBj4KgVXEuQVa5llL0Jhn7lixuZk",
+            authDomain: "homepage-2d25b.firebaseapp.com",
+            projectId: "homepage-2d25b",
+            storageBucket: "homepage-2d25b.firebasestorage.app",
+            messagingSenderId: "931321053557",
+            appId: "1:931321053557:web:d65321260fca7969c5533c"
+        };
+
+        // Initialize Firebase
+        let app, auth, db;
+        let isFirebaseConfigured = false;
+
+        try {
+            if (firebaseConfig.apiKey !== "YOUR_API_KEY") {
+                app = initializeApp(firebaseConfig);
+                auth = getAuth(app);
+                db = getFirestore(app);
+                isFirebaseConfigured = true;
+            } else {
+                console.log('%c⚠️ Firebase not configured. Edit homepage.html and replace firebaseConfig values.', 'color: orange; font-size: 14px;');
+            }
+        } catch (e) {
+            console.error('Firebase init error:', e);
+        }
+
+        // ============================================
+        // STATE
+        // ============================================
+        let isAdmin = false;
+        let currentUser = null;
+        let editingSection = null;
+        let originalContent = {};
+
+        // ============================================
+        // DEFAULT DATA (used as fallback if Firestore is empty)
+        // ============================================
+        const defaultData = {
+            biography: {
+                html: document.getElementById('biography-content').innerHTML
+            },
+            honors: {
+                items: [
+                    { year: "2023", text: "Outstanding Academic Performance Award for Research Degree Students, CityU." },
+                    { year: "2020", text: "City University of Hong Kong Presidential PhD Scholarship." },
+                    { year: "2019", text: "Outstanding Postgraduates of Nanjing University." },
+                    { year: "2019", text: "Artificial Intelligence Scholarship of Nanjing." },
+                    { year: "2018", text: "<strong>National Scholarship for Postgraduates</strong>." }
+                ]
+            },
+            publications: {
+                working: [
+                    { title: "Breaking the Iterative Barrier: Machine Learning Facilitates Real-Time Grid Optimization with Certifiable Safety", authors: "<strong>M. Zhou</strong>, E. Liang and M. Chen.", tag: "In Preparation" },
+                    { title: "Machine learning for solving multi-stage optimization problems", authors: "<strong>M. Zhou</strong>, E. Liang and M. Chen.", tag: "In Preparation" }
+                ],
+                journals: [
+                    { title: "Partially Permutation-Invariant Neural Network for Solving Two-Stage Stochastic AC-OPF Problem", authors: "<strong>M. Zhou</strong>, E. Liang, M. Chen and S. H. Low.", venue: "IEEE Transactions on Power Systems, Accepted, 2025." },
+                    { title: "DeepOPF-FT: One Deep Neural Network for Multiple AC-OPF Problems with Flexible Topology", authors: "<strong>M. Zhou</strong>, M. Chen and S. H. Low.", venue: "IEEE Transactions on Power Systems, vol. 38, no. 1, pp.964-967, 2023." },
+                    { title: "Multi-objective prediction intervals for wind power forecast based on deep neural networks", authors: "<strong>M. Zhou</strong>, B. Wang, S. Guo, and J. Watada.", venue: "Information Sciences, vol. 550, pp. 207-220, 2021." },
+                    { title: "Deep learning-based rolling horizon unit commitment under hybrid uncertainties", authors: "<strong>M. Zhou</strong>, B. Wang, and J. Watada.", venue: "Energy, vol. 186, p. 115843, 2019." },
+                    { title: "A data-driven approach for multi-objective unit commitment under hybrid uncertainties", authors: "<strong>M. Zhou</strong>, B. Wang, T. Li, and J. Watada.", venue: "Energy, vol. 164, pp. 722-733, 2018." }
+                ],
+                conferences: [
+                    { title: "Optimizing Demand Response in Distribution Network with Grid Operational Constraints", authors: "T. Zhao, <strong>M. Zhou</strong>, Y. Mo, J. M. Wang, J. Luo, X. Pan, and M. Chen.", venue: "Proceedings of the 14th ACM International Conference on Future Energy Systems (e-Energy), 2023." }
+                ]
+            },
+            activities: {
+                label: "Reviewer for Journals",
+                items: ["IEEE Transactions on Power Systems", "IEEE Transactions on Smart Grid", "Energy"]
+            },
+            teaching: {
+                label: "Teaching Assistant, City University of Hong Kong",
+                items: [
+                    { code: "SDSC6014", name: "Networked Life and Data Science" },
+                    { code: "SDSC3060", name: "Operations Research" },
+                    { code: "SDSC3102", name: "Quality Technologies" }
+                ]
+            },
+            interests: {
+                tags: ["Machine Learning for Power Systems", "Data-Driven Optimization", "Smart Grid Operations"]
+            }
+        };
+
+        // ============================================
+        // AUTH FUNCTIONS
+        // ============================================
+        window.showLoginModal = function() {
+            document.getElementById('loginModal').classList.add('active');
+            document.getElementById('loginEmail').focus();
+        };
+
+        window.hideLoginModal = function() {
+            document.getElementById('loginModal').classList.remove('active');
+            document.getElementById('loginError').style.display = 'none';
+        };
+
+        window.handleLogin = async function(e) {
+            e.preventDefault();
+            if (!isFirebaseConfigured) {
+                showToast('Firebase not configured. See console for instructions.', 'error');
+                return;
+            }
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const btn = document.getElementById('loginBtn');
+            const errorEl = document.getElementById('loginError');
+
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spinner"></span> Signing in...';
+            errorEl.style.display = 'none';
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                hideLoginModal();
+                showToast('Welcome back! Edit mode enabled.', 'success');
+            } catch (error) {
+                errorEl.textContent = getAuthErrorMessage(error.code);
+                errorEl.style.display = 'block';
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Sign In';
+            }
+        };
+
+        window.handleLogout = async function() {
+            if (editingSection) {
+                cancelEdit(editingSection);
+            }
+            try {
+                await signOut(auth);
+                showToast('Logged out successfully.', 'success');
+            } catch (error) {
+                showToast('Logout failed: ' + error.message, 'error');
+            }
+        };
+
+        function getAuthErrorMessage(code) {
+            const map = {
+                'auth/wrong-password': 'Incorrect password.',
+                'auth/user-not-found': 'Account not found.',
+                'auth/too-many-requests': 'Too many attempts. Try again later.',
+                'auth/invalid-email': 'Invalid email address.',
+                'auth/invalid-credential': 'Invalid email or password.'
+            };
+            return map[code] || 'Login failed. Please try again.';
+        }
+
+        // Auth state observer
+        if (isFirebaseConfigured) {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    isAdmin = true;
+                    currentUser = user;
+                    enterAdminMode(user);
+                } else {
+                    isAdmin = false;
+                    currentUser = null;
+                    exitAdminMode();
+                }
+            });
+        }
+
+        function enterAdminMode(user) {
+            document.body.classList.add('admin-mode');
+            document.getElementById('adminBar').classList.add('active');
+            document.getElementById('adminEmail').textContent = user.email;
+            document.getElementById('loginTrigger').style.display = 'none';
+            checkIfSeeded();
+        }
+
+        function exitAdminMode() {
+            document.body.classList.remove('admin-mode');
+            document.getElementById('adminBar').classList.remove('active');
+            document.getElementById('loginTrigger').style.display = 'flex';
+        }
+
+        // ============================================
+        // FIRESTORE DATA LOADING
+        // ============================================
+        async function loadSectionData(section) {
+            if (!isFirebaseConfigured) return defaultData[section];
+            try {
+                const docRef = doc(db, 'website', section);
+                const docSnap = await getDoc(docRef);
+                if (docSnap.exists()) {
+                    return docSnap.data();
+                }
+                return defaultData[section];
+            } catch (e) {
+                console.warn(`Failed to load ${section} from Firestore, using defaults.`, e);
+                return defaultData[section];
+            }
+        }
+
+        async function saveSectionData(section, data) {
+            if (!isFirebaseConfigured) {
+                showToast('Firebase not configured.', 'error');
+                return false;
+            }
+            try {
+                const docRef = doc(db, 'website', section);
+                await setDoc(docRef, data);
+                return true;
+            } catch (e) {
+                console.error(`Failed to save ${section}:`, e);
+                return false;
+            }
+        }
+
+        // ============================================
+        // SEED INITIAL CONTENT (first-time setup)
+        // ============================================
+        async function checkIfSeeded() {
+            if (!isFirebaseConfigured) return;
+            try {
+                const docRef = doc(db, 'website', 'biography');
+                const docSnap = await getDoc(docRef);
+                if (!docSnap.exists()) {
+                    document.getElementById('seedBtn').style.display = 'inline-flex';
+                }
+            } catch (e) { /* silently ignore */ }
+        }
+
+        window.seedInitialContent = async function() {
+            const btn = document.getElementById('seedBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<span class="loading-spinner"></span> Seeding...';
+            try {
+                const sections = Object.keys(defaultData);
+                for (const section of sections) {
+                    await saveSectionData(section, defaultData[section]);
+                }
+                btn.style.display = 'none';
+                showToast('All content seeded to Firestore!', 'success');
+            } catch (e) {
+                showToast('Seed failed: ' + e.message, 'error');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-database"></i> Seed Initial Content';
+            }
+        };
+
+        // Load all sections on page load
+        async function loadAllContent() {
+            if (!isFirebaseConfigured) return;
+            try {
+                const bioData = await loadSectionData('biography');
+                if (bioData && bioData.html) renderBiography(bioData);
+
+                const honorsData = await loadSectionData('honors');
+                if (honorsData && honorsData.items) renderHonors(honorsData);
+
+                const pubData = await loadSectionData('publications');
+                if (pubData) renderPublications(pubData);
+
+                const actData = await loadSectionData('activities');
+                if (actData) renderActivities(actData);
+
+                const teachData = await loadSectionData('teaching');
+                if (teachData) renderTeaching(teachData);
+
+                const intData = await loadSectionData('interests');
+                if (intData && intData.tags) renderInterests(intData);
+            } catch (e) {
+                console.warn('Content loading failed, using static HTML.', e);
+            }
+        }
+
+        // ============================================
+        // RENDER FUNCTIONS
+        // ============================================
+        function renderBiography(data) {
+            document.getElementById('biography-content').innerHTML = data.html;
+        }
+
+        function renderHonors(data) {
+            const el = document.getElementById('honors-content');
+            el.innerHTML = data.items.map(item => 
+                `<li><strong>[${item.year}]</strong> ${item.text}</li>`
+            ).join('');
+        }
+
+        function renderPublications(data) {
+            const el = document.getElementById('publications-content');
+            let html = '';
+
+            // Working papers
+            if (data.working && data.working.length > 0) {
+                html += `<h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:0;">Working Papers / Preprints</h4>`;
+                data.working.forEach(pub => {
+                    html += `<div class="pub-item">
+                        <span class="pub-title">${pub.title}</span>${pub.tag ? `<span class="tag-prep">${pub.tag}</span>` : ''}<br>
+                        ${pub.authors}<br>
+                    </div>`;
+                });
+            }
+
+            // Journals
+            if (data.journals && data.journals.length > 0) {
+                html += `<h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Refereed Journals</h4>`;
+                data.journals.forEach(pub => {
+                    html += `<div class="pub-item">
+                        <span class="pub-title">${pub.title}</span><br>
+                        ${pub.authors}<br>
+                        <span class="pub-venue">${pub.venue}</span>
+                    </div>`;
+                });
+            }
+
+            // Conferences
+            if (data.conferences && data.conferences.length > 0) {
+                html += `<h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Conference Proceedings</h4>`;
+                data.conferences.forEach(pub => {
+                    html += `<div class="pub-item">
+                        <span class="pub-title">${pub.title}</span><br>
+                        ${pub.authors}<br>
+                        <span class="pub-venue">${pub.venue}</span>
+                    </div>`;
+                });
+            }
+
+            el.innerHTML = html;
+        }
+
+        function renderActivities(data) {
+            const el = document.getElementById('activities-content');
+            el.innerHTML = `
+                <div style="margin-bottom: 10px; font-weight: 500;">${data.label}</div>
+                <ul class="item-list">
+                    ${data.items.map(item => `<li>${item}</li>`).join('')}
+                </ul>`;
+        }
+
+        function renderTeaching(data) {
+            const el = document.getElementById('teaching-content');
+            el.innerHTML = `
+                <div style="margin-bottom: 10px; font-weight: 500;">${data.label}</div>
+                <ul class="item-list">
+                    ${data.items.map(item => `<li><strong>${item.code}</strong>: ${item.name}</li>`).join('')}
+                </ul>`;
+        }
+
+        function renderInterests(data) {
+            const el = document.getElementById('interests-content');
+            el.innerHTML = data.tags.map(tag =>
+                `<span style="background:#eef2f5; padding:8px 15px; border-radius:4px; font-size:0.95em; color:#444;">${tag}</span>`
+            ).join('');
+        }
+
+        // ============================================
+        // EDIT FUNCTIONS
+        // ============================================
+        window.startEdit = async function(section) {
+            if (editingSection) {
+                cancelEdit(editingSection);
+            }
+            editingSection = section;
+
+            const sectionEl = document.querySelector(`[data-section="${section}"]`);
+            sectionEl.classList.add('section-editing');
+
+            // Hide the edit button
+            sectionEl.querySelector('.section-edit-btn').style.display = 'none';
+
+            // Load current data
+            const data = await loadSectionData(section);
+            originalContent[section] = JSON.parse(JSON.stringify(data));
+
+            // Build editor based on section type
+            switch(section) {
+                case 'biography': buildBiographyEditor(data); break;
+                case 'honors': buildHonorsEditor(data); break;
+                case 'publications': buildPublicationsEditor(data); break;
+                case 'activities': buildActivitiesEditor(data); break;
+                case 'teaching': buildTeachingEditor(data); break;
+                case 'interests': buildInterestsEditor(data); break;
+            }
+        };
+
+        function addEditActions(contentEl, section) {
+            const actions = document.createElement('div');
+            actions.className = 'edit-actions';
+            actions.innerHTML = `
+                <button class="btn-cancel" onclick="cancelEdit('${section}')">Cancel</button>
+                <button class="btn-save" onclick="saveEdit('${section}')"><i class="fas fa-check"></i> Save</button>
+            `;
+            contentEl.parentElement.appendChild(actions);
+        }
+
+        // --- Biography Editor ---
+        function buildBiographyEditor(data) {
+            const el = document.getElementById('biography-content');
+            el.setAttribute('contenteditable', 'true');
+            el.classList.add('editable-content');
+            el.addEventListener('paste', stripFormattingOnPaste);
+            el.focus();
+            addEditActions(el, 'biography');
+        }
+
+        function stripFormattingOnPaste(e) {
+            e.preventDefault();
+            const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+            document.execCommand('insertText', false, text);
+        }
+
+        // --- Honors Editor ---
+        function buildHonorsEditor(data) {
+            const el = document.getElementById('honors-content');
+            let html = '<div id="honors-editor">';
+            data.items.forEach((item, i) => {
+                html += `<div class="list-editor-item" data-index="${i}">
+                    <input type="text" value="${item.year}" placeholder="Year" style="max-width:70px;">
+                    <input type="text" value="${escapeHtml(item.text)}" placeholder="Description">
+                    <button class="remove-item-btn" onclick="removeListItem('honors', ${i})" title="Remove"><i class="fas fa-times"></i></button>
+                </div>`;
+            });
+            html += `<button class="add-item-btn" onclick="addHonorsItem()"><i class="fas fa-plus"></i> Add Award</button>`;
+            html += '</div>';
+            el.innerHTML = html;
+            addEditActions(el, 'honors');
+        }
+
+        window.addHonorsItem = function() {
+            const editor = document.getElementById('honors-editor');
+            const firstItem = editor.querySelector('.list-editor-item');
+            const newItem = document.createElement('div');
+            newItem.className = 'list-editor-item';
+            newItem.innerHTML = `
+                <input type="text" value="" placeholder="Year" style="max-width:70px;">
+                <input type="text" value="" placeholder="Description">
+                <button class="remove-item-btn" onclick="this.parentElement.remove()" title="Remove"><i class="fas fa-times"></i></button>
+            `;
+            editor.insertBefore(newItem, firstItem || editor.querySelector('.add-item-btn'));
+            newItem.querySelector('input').focus();
+        };
+
+        // --- Publications Editor ---
+        function buildPublicationsEditor(data) {
+            const el = document.getElementById('publications-content');
+            let html = '<div id="publications-editor">';
+
+            // Working papers
+            html += `<h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:0;">Working Papers / Preprints</h4>`;
+            html += '<div id="pub-working">';
+            (data.working || []).forEach((pub, i) => {
+                html += buildPubEditorItem('working', i, pub);
+            });
+            html += `<button class="add-item-btn" onclick="addPubItem('working')"><i class="fas fa-plus"></i> Add Working Paper</button>`;
+            html += '</div>';
+
+            // Journals
+            html += `<h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Refereed Journals</h4>`;
+            html += '<div id="pub-journals">';
+            (data.journals || []).forEach((pub, i) => {
+                html += buildPubEditorItem('journals', i, pub);
+            });
+            html += `<button class="add-item-btn" onclick="addPubItem('journals')"><i class="fas fa-plus"></i> Add Journal Paper</button>`;
+            html += '</div>';
+
+            // Conferences
+            html += `<h4 style="color:#666; border-left:3px solid var(--accent-color); padding-left:10px; margin-top:30px;">Conference Proceedings</h4>`;
+            html += '<div id="pub-conferences">';
+            (data.conferences || []).forEach((pub, i) => {
+                html += buildPubEditorItem('conferences', i, pub);
+            });
+            html += `<button class="add-item-btn" onclick="addPubItem('conferences')"><i class="fas fa-plus"></i> Add Conference Paper</button>`;
+            html += '</div>';
+
+            html += '</div>';
+            el.innerHTML = html;
+            addEditActions(el, 'publications');
+        }
+
+        function buildPubEditorItem(category, index, pub) {
+            const hasVenue = category !== 'working';
+            return `<div class="pub-editor-item" data-category="${category}" data-index="${index}">
+                <div class="pub-editor-header">
+                    <span style="font-size:0.8em;color:#999;">#${index + 1}</span>
+                    <button class="remove-item-btn" onclick="this.closest('.pub-editor-item').remove()" title="Remove"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="field-row">
+                    <label>Title</label>
+                    <input type="text" class="pub-field-title" value="${escapeHtml(pub.title || '')}">
+                </div>
+                <div class="field-row">
+                    <label>Authors (use &lt;strong&gt; for bold)</label>
+                    <input type="text" class="pub-field-authors" value="${escapeHtml(pub.authors || '')}">
+                </div>
+                ${hasVenue ? `<div class="field-row">
+                    <label>Venue</label>
+                    <input type="text" class="pub-field-venue" value="${escapeHtml(pub.venue || '')}">
+                </div>` : `<div class="field-row">
+                    <label>Status Tag (e.g., "In Preparation", "Under Review")</label>
+                    <input type="text" class="pub-field-tag" value="${escapeHtml(pub.tag || '')}">
+                </div>`}
+            </div>`;
+        }
+
+        window.addPubItem = function(category) {
+            const container = document.getElementById(`pub-${category}`);
+            const firstItem = container.querySelector('.pub-editor-item');
+            const tmpDiv = document.createElement('div');
+            tmpDiv.innerHTML = buildPubEditorItem(category, 0, {});
+            const newItem = tmpDiv.firstElementChild;
+            container.insertBefore(newItem, firstItem || container.querySelector('.add-item-btn'));
+            newItem.querySelector('input').focus();
+        };
+
+        // --- Activities Editor ---
+        function buildActivitiesEditor(data) {
+            const el = document.getElementById('activities-content');
+            let html = '<div id="activities-editor">';
+            html += `<div class="field-row" style="margin-bottom:16px;">
+                <label style="display:block;font-size:0.85em;color:#666;margin-bottom:4px;">Section Label</label>
+                <input type="text" id="activities-label" value="${escapeHtml(data.label || '')}" style="width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:4px;font-family:inherit;box-sizing:border-box;">
+            </div>`;
+            data.items.forEach((item, i) => {
+                html += `<div class="list-editor-item" data-index="${i}">
+                    <input type="text" value="${escapeHtml(item)}">
+                    <button class="remove-item-btn" onclick="this.parentElement.remove()" title="Remove"><i class="fas fa-times"></i></button>
+                </div>`;
+            });
+            html += `<button class="add-item-btn" onclick="addSimpleListItem('activities-editor')"><i class="fas fa-plus"></i> Add Item</button>`;
+            html += '</div>';
+            el.innerHTML = html;
+            addEditActions(el, 'activities');
+        }
+
+        // --- Teaching Editor ---
+        function buildTeachingEditor(data) {
+            const el = document.getElementById('teaching-content');
+            let html = '<div id="teaching-editor">';
+            html += `<div class="field-row" style="margin-bottom:16px;">
+                <label style="display:block;font-size:0.85em;color:#666;margin-bottom:4px;">Section Label</label>
+                <input type="text" id="teaching-label" value="${escapeHtml(data.label || '')}" style="width:100%;padding:8px 10px;border:1px solid #ddd;border-radius:4px;font-family:inherit;box-sizing:border-box;">
+            </div>`;
+            data.items.forEach((item, i) => {
+                html += `<div class="list-editor-item" data-index="${i}">
+                    <input type="text" value="${escapeHtml(item.code)}" placeholder="Code" style="max-width:100px;">
+                    <input type="text" value="${escapeHtml(item.name)}" placeholder="Course Name">
+                    <button class="remove-item-btn" onclick="this.parentElement.remove()" title="Remove"><i class="fas fa-times"></i></button>
+                </div>`;
+            });
+            html += `<button class="add-item-btn" onclick="addTeachingItem()"><i class="fas fa-plus"></i> Add Course</button>`;
+            html += '</div>';
+            el.innerHTML = html;
+            addEditActions(el, 'teaching');
+        }
+
+        window.addTeachingItem = function() {
+            const editor = document.getElementById('teaching-editor');
+            const firstItem = editor.querySelector('.list-editor-item');
+            const newItem = document.createElement('div');
+            newItem.className = 'list-editor-item';
+            newItem.innerHTML = `
+                <input type="text" value="" placeholder="Code" style="max-width:100px;">
+                <input type="text" value="" placeholder="Course Name">
+                <button class="remove-item-btn" onclick="this.parentElement.remove()" title="Remove"><i class="fas fa-times"></i></button>
+            `;
+            editor.insertBefore(newItem, firstItem || editor.querySelector('.add-item-btn'));
+            newItem.querySelector('input').focus();
+        };
+
+        // --- Interests Editor ---
+        function buildInterestsEditor(data) {
+            const el = document.getElementById('interests-content');
+            let html = '<div id="interests-editor" class="tag-editor">';
+            data.tags.forEach((tag, i) => {
+                html += `<div class="tag-editor-item">
+                    <input type="text" value="${escapeHtml(tag)}">
+                    <button class="remove-item-btn" onclick="this.parentElement.remove()" title="Remove"><i class="fas fa-times"></i></button>
+                </div>`;
+            });
+            html += `</div><button class="add-item-btn" style="margin-top:12px;" onclick="addInterestTag()"><i class="fas fa-plus"></i> Add Tag</button>`;
+            el.innerHTML = html;
+            addEditActions(el, 'interests');
+        }
+
+        window.addInterestTag = function() {
+            const editor = document.getElementById('interests-editor');
+            const newTag = document.createElement('div');
+            newTag.className = 'tag-editor-item';
+            newTag.innerHTML = `
+                <input type="text" value="" placeholder="New Interest">
+                <button class="remove-item-btn" onclick="this.parentElement.remove()" title="Remove"><i class="fas fa-times"></i></button>
+            `;
+            editor.prepend(newTag);
+            newTag.querySelector('input').focus();
+        };
+
+        window.addSimpleListItem = function(editorId) {
+            const editor = document.getElementById(editorId);
+            const firstItem = editor.querySelector('.list-editor-item');
+            const newItem = document.createElement('div');
+            newItem.className = 'list-editor-item';
+            newItem.innerHTML = `
+                <input type="text" value="" placeholder="New item">
+                <button class="remove-item-btn" onclick="this.parentElement.remove()" title="Remove"><i class="fas fa-times"></i></button>
+            `;
+            editor.insertBefore(newItem, firstItem || editor.querySelector('.add-item-btn'));
+            newItem.querySelector('input').focus();
+        };
+
+        window.removeListItem = function(section, index) {
+            const editor = document.getElementById(`${section}-editor`);
+            const items = editor.querySelectorAll('.list-editor-item');
+            if (items[index]) items[index].remove();
+        };
+
+        // ============================================
+        // SAVE / CANCEL
+        // ============================================
+        window.saveEdit = async function(section) {
+            let data;
+
+            switch(section) {
+                case 'biography':
+                    data = { html: document.getElementById('biography-content').innerHTML.replace(/<div class="edit-actions">.*?<\/div>/s, '') };
+                    break;
+
+                case 'honors':
+                    data = { items: [] };
+                    document.querySelectorAll('#honors-editor .list-editor-item').forEach(item => {
+                        const inputs = item.querySelectorAll('input');
+                        if (inputs[0].value.trim() || inputs[1].value.trim()) {
+                            data.items.push({ year: inputs[0].value.trim(), text: inputs[1].value.trim() });
+                        }
+                    });
+                    break;
+
+                case 'publications':
+                    data = { working: [], journals: [], conferences: [] };
+                    ['working', 'journals', 'conferences'].forEach(cat => {
+                        document.querySelectorAll(`#pub-${cat} .pub-editor-item`).forEach(item => {
+                            const pub = {
+                                title: item.querySelector('.pub-field-title').value.trim(),
+                                authors: item.querySelector('.pub-field-authors').value.trim()
+                            };
+                            if (cat === 'working') {
+                                const tagInput = item.querySelector('.pub-field-tag');
+                                if (tagInput) pub.tag = tagInput.value.trim();
+                            } else {
+                                const venueInput = item.querySelector('.pub-field-venue');
+                                if (venueInput) pub.venue = venueInput.value.trim();
+                            }
+                            if (pub.title) data[cat].push(pub);
+                        });
+                    });
+                    break;
+
+                case 'activities':
+                    data = {
+                        label: document.getElementById('activities-label').value.trim(),
+                        items: []
+                    };
+                    document.querySelectorAll('#activities-editor .list-editor-item input').forEach(input => {
+                        if (input.value.trim()) data.items.push(input.value.trim());
+                    });
+                    break;
+
+                case 'teaching':
+                    data = {
+                        label: document.getElementById('teaching-label').value.trim(),
+                        items: []
+                    };
+                    document.querySelectorAll('#teaching-editor .list-editor-item').forEach(item => {
+                        const inputs = item.querySelectorAll('input');
+                        if (inputs[0].value.trim() || inputs[1].value.trim()) {
+                            data.items.push({ code: inputs[0].value.trim(), name: inputs[1].value.trim() });
+                        }
+                    });
+                    break;
+
+                case 'interests':
+                    data = { tags: [] };
+                    document.querySelectorAll('#interests-editor .tag-editor-item input').forEach(input => {
+                        if (input.value.trim()) data.tags.push(input.value.trim());
+                    });
+                    break;
+            }
+
+            // Save to Firestore
+            const success = await saveSectionData(section, data);
+
+            if (success) {
+                // Re-render the section
+                switch(section) {
+                    case 'biography': renderBiography(data); break;
+                    case 'honors': renderHonors(data); break;
+                    case 'publications': renderPublications(data); break;
+                    case 'activities': renderActivities(data); break;
+                    case 'teaching': renderTeaching(data); break;
+                    case 'interests': renderInterests(data); break;
+                }
+                finishEdit(section);
+                showToast('Changes saved successfully!', 'success');
+            } else {
+                showToast('Failed to save changes. Please try again.', 'error');
+            }
+        };
+
+        window.cancelEdit = function(section) {
+            // Restore original content
+            const data = originalContent[section] || defaultData[section];
+            switch(section) {
+                case 'biography':
+                    document.getElementById('biography-content').removeAttribute('contenteditable');
+                    document.getElementById('biography-content').classList.remove('editable-content');
+                    renderBiography(data);
+                    break;
+                case 'honors': renderHonors(data); break;
+                case 'publications': renderPublications(data); break;
+                case 'activities': renderActivities(data); break;
+                case 'teaching': renderTeaching(data); break;
+                case 'interests': renderInterests(data); break;
+            }
+            finishEdit(section);
+        };
+
+        function finishEdit(section) {
+            const sectionEl = document.querySelector(`[data-section="${section}"]`);
+            sectionEl.classList.remove('section-editing');
+            const editBtn = sectionEl.querySelector('.section-edit-btn');
+            if (editBtn) editBtn.style.display = '';
+            // Remove edit actions
+            const actions = sectionEl.querySelector('.edit-actions');
+            if (actions) actions.remove();
+            editingSection = null;
+        }
+
+        // ============================================
+        // UTILITIES
+        // ============================================
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showToast(message, type = '') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast' + (type ? ` ${type}` : '');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // Load content on page load
+        loadAllContent();
+    </script>
+</body>
+</html>
